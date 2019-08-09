@@ -1,4 +1,4 @@
-class CliProjectRene::AirportResturants
+class Airport
   attr_accessor :name, :location, :url
 
   @@all = []

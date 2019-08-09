@@ -1,6 +1,3 @@
-require_relative "../lib/scraper.rb"
-require_relative "../lib/airport.rb"
-require 'nokogiri'
 
 class Cli
   BASE_URL = "https://www.tasteofhome.com/collection/best-airport-restaurants/"

@@ -1,7 +1,7 @@
 require "pry"
 require "nokogiri"
 require "open-uri"
-require "cli_project_rene/version"
+require_relative "./cli_project_rene/version"
 
 #environment
 module CliProjectRene
@@ -9,6 +9,6 @@ module CliProjectRene
   # Your code goes here...
 end
 
-require_relative "./lib/cli_project_rene/airport"
-require_relative "./lib/cli_project_rene/scraper"
-require_relative "./lib/cli_project_rene/cli"
+require_relative "./airport"
+require_relative "./scraper"
+require_relative "./cli"

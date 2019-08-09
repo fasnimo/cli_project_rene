@@ -7,8 +7,8 @@ class CliProjectRene::Scraper
    rest_list = parsed_page.css("div.listicle-page.track-fired")
    rest_list.each do |rest_listing|
      rest = {
-       location: rest_list.css("p.strong").text
-       name: rest_list.css("a.SWhtmlLink strong")
+       location: rest_list.css("p:nth-child(2) strong").text
+       name: rest_list.css("a.SWhtmlLink strong").text
      }
    rest_cards = parsed_page.css("div.listicle-page.track-fired")
   end
