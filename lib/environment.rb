@@ -10,5 +10,5 @@ module CliProjectRene
 end
 
 require_relative "./lib/cli_project_rene/airport"
-require_relative "./lib/cli_project_rene/resturants"
-require_relative "./lib/cli_project_rene/guest"
+require_relative "./lib/cli_project_rene/scraper"
+require_relative "./lib/cli_project_rene/cli"

@@ -1,7 +1,7 @@
 class Cli
   def run
     self.welcome
-    Scraper.sraper_titles
+    Scraper.sraper_name
     loop do
       user_input = name
     if user_input == "exit" || user_input.include?("n")
