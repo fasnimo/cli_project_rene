@@ -1,16 +1,25 @@
+require_relative "../lib/scraper.rb"
+require_relative "../lib/airport.rb"
+require 'nokogiri'
+
 class Cli
+  BASE_URL = "https://www.tasteofhome.com/collection/best-airport-restaurants/"
+
   def run
     self.welcome
-    Scraper.sraper_name
-    loop do
-      user_input = name
-    if user_input == "exit" || user_input.include?("n")
-      return
-    else
-      self.resturant_list
+    list_resturants
+    choose_airport
+    display_links
   end
-end
-end
+#     Scraper.sraper_name
+#     loop do
+#       user_input = name
+#     if user_input == "exit" || user_input.include?("n")
+#       return
+#     else
+#       self.resturant_list
+#   end
+# end
 
   def welcome
     puts "Welcome!\n\n"
