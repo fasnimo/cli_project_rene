@@ -1,12 +1,11 @@
 class Airport
-  attr_accessor :name, :location, :url
+  attr_accessor :name, :url_last
 
   @@all = []
 
-  def initialize(name=nil, location=nil, url = nil)
+  def initialize(name=nil, url_last= nil)
     @name = name
-    @location = location
-    @url = url
+    @url_last = url_last
     @@all << self
   end
 

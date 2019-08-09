@@ -9,6 +9,6 @@ module CliProjectRene
   # Your code goes here...
 end
 
-require_relative "./airport"
-require_relative "./scraper"
-require_relative "./cli"
+require_relative "./airport.rb"
+require_relative "./scraper.rb"
+require_relative "./cli.rb"
