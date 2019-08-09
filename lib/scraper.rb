@@ -1,15 +1,16 @@
 class CliProjectRene::Scraper
 
   def scraper
-  BASE_URL = "https://www.tasteofhome.com/collection/best-airport-restaurants/"
-  unparsed_page = HTTParty.get(url)
-  parsed_page = Nokogiri::HTML(unparsed_page)
-  rest_list = parsed_page.css("div.listicle-page.track-fired")
-  rest_list.each do |rest_listing|
-    rest = {
-      title: parsed_page.css("div.listicle-page.track-fired")
-    }
-  rest_cards = parsed_page.css("div.listicle-page.track-fired")
+    BASE_URL = "https://www.tasteofhome.com/collection/best-airport-restaurants/"
+   unparsed_page = HTTParty.get(url)
+   parsed_page = Nokogiri::HTML(unparsed_page)
+   rest_list = parsed_page.css("div.listicle-page.track-fired")
+   rest_list.each do |rest_listing|
+     rest = {
+       location: rest_list.css("p.strong").text
+       name: rest_list.css("a.SWhtmlLink strong")
+     }
+   rest_cards = parsed_page.css("div.listicle-page.track-fired")
   end
   # def self.scraper_resturants
   #     doc = Nokogiri::HTML(open("https://www.tasteofhome.com/collection/best-airport-restaurants/"))
