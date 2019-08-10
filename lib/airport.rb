@@ -3,7 +3,7 @@ class Airport
 
   @@all = []
 
-  def initialize(name=nil, url_last= nil, info = info)
+  def initialize(name=nil, url_last= nil, info = nil)
     @name = name
     @url_last = url_last
     @info = info
@@ -18,7 +18,7 @@ class Airport
     self.new(
     l.css('h4').collect{|s| s.css('strong').text.strip},
     l.css('h4 a').attribute('href'),
-    l.css('p')[2]
+    l.css('p:nth-of-type(2n)')
     # "#{l.css('h4').collect{|d| d.css('a.SWhtmlLink').attribute('href')}}"
     )
 

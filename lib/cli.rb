@@ -14,10 +14,10 @@ class Cli
     puts "(please enter: 'first' or 'last')"
     input = gets.strip.downcase
 
-    if input == "first"
+    if input == 1
       input = 1
       the_airports(input)
-    elsif input == "bottom"
+    elsif input == 11
       input = 11
       the_airports(input)
   else
@@ -50,16 +50,17 @@ end
   def the_airports(place)
     if place == 1
       puts "\n\n Beginning list of Best Airport Resturants \n\n"
-      Airport.all[place - 10].each do |p|
-        puts "#{p.name}. #{p.url_last}"
-      end
-    else
-      puts "\n\n Ending of list of Best Airport Resturants \n\n"
-      Airport.all[place - 10].each do |p|
-        puts "#{p.name}. #{p.url_last}"
-      end
+      Airport.first(10).each do |p|
+       puts "#{p.name}. #{p.url_last}. #{p.info}"
   end
-end
+   else
+      puts "\n\n Ending of list of Best Airport Resturants \n\n"
+      Airport.last(10).each do |p|
+      puts "#{p.name}. #{p.url_last}. #{p.info}"
+     end
+   end
+ end
+
 
   def resturant_info(info)
     puts ""
@@ -67,3 +68,11 @@ end
   end
 
 end
+# Airport.all[place - 10].each do |p|
+#   p.self
+  # puts "#{p.name}. #{p.url_last}. #{p.info}"
+# end
+
+# Airport.all[place - 10].each do |p|
+#   p.self
+  # puts "#{p.name}. #{p.url_last}. #{p.info}"
