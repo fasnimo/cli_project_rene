@@ -28,13 +28,13 @@ class Cli
   input = gets.strip.to_i
 
   if input >= 1 && input > 20
-    restaurant_info(input)
+    r_info(input)
   else
     while input < 1 || input > 20
     puts "Please enter a valid number from 1-20"
     input = gets.strip.to_i
   end
-    restaurant_info(input)
+    r_info(input)
     # fly
 end
 
@@ -50,31 +50,33 @@ end
   def the_airports(place)
     if place == 1
       puts "\n\n Beginning list of Best Airport Resturants \n\n"
-      Airport.first(10).each do |p|
-       puts "#{p.name}. #{p.url_last}"
-  end
+      Airport.all[0..10]
+  #     Airport.first(10).each do |p|
+  #      puts "#{p.name}. #{p.url_last}"
+  # end
    else
       puts "\n\n Ending of list of Best Airport Resturants \n\n"
-      Airport.last(10).each do |p|
-      puts "#{p.name}. #{p.url_last}"
-      fly
-     end
+      Airport.all[11..20]
+    #   Airport.last(10).each do |p|
+    #   puts "#{p.name}. #{p.url_last}"
+    #   fly
+    #  end
    end
  end
 
- def choose_place
-   puts 'Choose a places to eat!'
-   index = gets.strip.to_i - 1
-   restaurant = Airport.all[index]
-   Scraper.list_airport(restaurant)
-   self.restaurant_info(restaurant)
-   fly
- end
+ # def choose_place
+ #   puts 'Choose a places to eat!'
+ #   index = gets.strip.to_i - 1
+ #   restaurant = Airport.all[index]
+ #   Scraper.list_airport(restaurant)
+ #   self.restaurant_info(restaurant)
+ #   fly
+ # end
 
-  def resturant_info(input)
+  def r_info(index)
     puts "\n\n\n"
-    puts "#{Airport.all[input].name}"
-    puts "#{Airport.all[input].url_last}"
+    puts "#{Airport.all[index].name}"
+    puts "#{Airport.all[index].url_last}"
     puts "\n\n\n"
     fly
   end

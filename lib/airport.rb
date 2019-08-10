@@ -20,6 +20,16 @@ class Airport
     )
 
   end
+  #might delete
+  def doc
+    @doc ||= Nokogiri::HTML(open("https://www.tasteofhome.com/collection/best-airport-restaurants/"))
+  end
 
+  def name
+    @name = doc.css(".entry-content .listicle-page:contains('name')").text
+  end
 
+  def url_last
+    @url_last = doc.css(".entry-content .listicle-page:contains('url_last')")
+  end
 end
