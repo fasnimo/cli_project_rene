@@ -51,19 +51,30 @@ end
     if place == 1
       puts "\n\n Beginning list of Best Airport Resturants \n\n"
       Airport.first(10).each do |p|
-       puts "#{p.name}. #{p.url_last}. #{p.info}"
+       puts "#{p.name}. #{p.url_last}"
   end
    else
       puts "\n\n Ending of list of Best Airport Resturants \n\n"
       Airport.last(10).each do |p|
-      puts "#{p.name}. #{p.url_last}. #{p.info}"
+      puts "#{p.name}. #{p.url_last}"
      end
    end
  end
 
+ def choose_place
+   puts 'Choose a places to eat!'
+   index = gets.strip.to_i - 1
+   resturant = Airport.all[index]
+   Scraper.list_airport(resturant)
+   self.resturant_info(resturant)
+ end
 
   def resturant_info(info)
-    puts ""
+    puts "\n\n\n"
+    puts resturant.name
+    puts resturant.url_last
+    puts resturant.info
+    puts "\n\n\n"
 
   end
 
