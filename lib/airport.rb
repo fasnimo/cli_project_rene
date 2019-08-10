@@ -13,5 +13,14 @@ class Airport
     @@all
   end
 
+  def self.new_list(l)
+    self.new(
+    l.css('h4').collect{|s| s.css('strong').text.strip},
+    l.css('h4 a').attribute('href')
+    # "#{l.css('h4').collect{|d| d.css('a.SWhtmlLink').attribute('href')}}"
+    )
+
+  end
+
 
 end
