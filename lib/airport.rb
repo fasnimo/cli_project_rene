@@ -1,3 +1,4 @@
+require 'pry'
 class Airport
   attr_accessor :name, :url_last
 
@@ -15,15 +16,16 @@ class Airport
 
   def self.new_list(l)
     self.new(
-    l.css('h4').collect{|s| s.css('strong').text.strip},
-    l.css('h4 a').attribute('href')
-    )
 
+    l.css('h4 strong').text
+    l.css('h4 a').map {|lin| lin.attr('href')}[0]
+    )
+    binding.pry
   end
   #might delete
-  def doc
-    @doc ||= Nokogiri::HTML(open("https://www.tasteofhome.com/collection/best-airport-restaurants/"))
-  end
+  # def doc
+  #   @doc ||= Nokogiri::HTML(open("https://www.tasteofhome.com/collection/best-airport-restaurants/"))
+  # end
 
   def name
     @name = doc.css(".entry-content .listicle-page:contains('name')").text

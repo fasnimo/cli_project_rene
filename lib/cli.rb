@@ -1,4 +1,4 @@
-
+require 'pry'
 class Cli
   BASE_URL = "https://www.tasteofhome.com/collection/best-airport-restaurants/"
 
@@ -75,8 +75,9 @@ end
 
   def r_info(index)
     puts "\n\n\n"
-    puts "#{Airport.all[index].name}"
-    puts "#{Airport.all[index].url_last}"
+    puts "#{Airport.all[index -1].name}"
+    puts "#{Airport.all[index -1 ].url_last}"
+    binding.pry
     puts "\n\n\n"
     fly
   end
