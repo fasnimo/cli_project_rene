@@ -1,9 +1,10 @@
 require 'pry'
-class Cli
+class CLI
+
+
 
   def run
-    Scraper.new.list_restaurant
-    Scraper.new.scrape_index
+    Scraper.new.restaurant_scrape
     puts "Welcome the Best Sushi Restaurants in chicago!"
     fly
   end
@@ -68,13 +69,14 @@ end
 
   def r_info(index)
     puts "\n\n\n"
-    puts "#{Scraper}"
-    puts "#{Scraper}"
+    puts "#{Scraper.name}"
+    puts "#{Scraper.page}"
     puts "\n\n\n"
     fly
   end
 
 end
+
 # Airport.all[place - 10].each do |p|
 #   p.self
   # puts "#{p.name}. #{p.url_last}. #{p.info}"

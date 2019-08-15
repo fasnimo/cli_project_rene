@@ -1,58 +1,23 @@
 class Scraper
 
-  def get_scrape
-    Nokogiri::HTML(open("https://www.timeout.com/chicago/restaurants/the-best-sushi-in-chicago"))
+  def restaurant_scrape
+  html = File.read('https://www.timeout.com/chicago/restaurants/the-best-sushi-in-chicago')
+  cli_project = Nokogiri::HTML(html)
+
+  projects = {}
+
+  cli_project.css("clearfix xs-text-left zone xs-pb4 list-redesign v5-zone has-moblie-cta").each do |project|
+    title = project.css("h3 a href").text
+    projects[title.to_sym] = {
+      # :image_link => project.css("div.project-thumbnail a img").attribute("src").value,
+      # :description => project.css("p.bbcard_blurb").text,
+      :location => project.css("tbody.tr(1) xs-px0 sm-full-width").text,
+      :cost => project.css("tbody.tr(4) xs-px0 xm-full-width").text#.gsub("%","").to_i
+    }
   end
 
-  def scrape_index
-    self.get_scrape.css(".clearfix xs-text-left zone xs-pb4 list-redesign v5-zone has-moblie-cta")
-    self.get_scrape.css(".js-article-wrap sm-flex")
-  end
-
-  def list_restaurant
-    scrape_index.each do |li|
-      Restaurant.new_list(li)
-    end
-  end
-
-  def self.new_list(l)
-    self.new(
-
-    l.css('h3 a').text,
-    l.css('h3 a').map{|lin| lin.attr('href')}[0]
-    )
-    #binding.pry
-  end
-
-  def name
-    @name = doc.css(".entry-content .listicle-page:contains('name')").text
-  end
-
-  def page
-    @page = doc.css(".entry-content .listicle-page:contains('page')")
-  end
+  projects
+end
+#restaurant_scrape
 
 end
-
-
-
-
-#   def self.scrape_resturant
-#     page = open(BASE_URL)
-#     html = Nokogiri.HTML(page)
-#     resturants = doc.css(".listicle-page.track-fired")
-#     resturants.each do |list|
-#       input = {
-#         name: list.css(".SWhtmlLink a"),
-#         url_last: list.css("a")[0].attr("href")}
-#       Airport.new(input)
-#     end
-#   end
-#
-#   def self.scraper_details(resturant)
-#     url = resturant.url
-#     html = Nokogiri.HTML(open(url))
-#     description =
-#     html.css(".SWhtmlLink li").text
-#   end
-# end
