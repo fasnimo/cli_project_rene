@@ -5,7 +5,7 @@ require "cli_project_rene/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "cli_project_rene"
-  spec.version       = CliProjectRene::VERSION
+spec.version       = CLIPROJECTRENE::VERSION
   spec.authors       = ["'Rene Cocom'"]
   spec.email         = ["'fasnimo@gmail.com'"]
 
