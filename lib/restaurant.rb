@@ -1,12 +1,11 @@
 require 'pry'
 class Restaurant
-  attr_accessor :name_profile, :location, :price, :blog, :bio, :profile_quote
+  attr_accessor :name, :location, :price, :name_profile, :blog, :bio, :profile_quote
 
   @@all = []
 
-  def initialize(name_profile=nil, page= nil)
-    @name_profile = name_profile
-    @page = page
+  def initialize(name = nil)
+    @name = name
     @@all << self
   end
 
@@ -14,5 +13,5 @@ class Restaurant
     @@all
   end
 
-  
+
 end
