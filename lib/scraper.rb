@@ -1,17 +1,35 @@
 class Scraper
 
   def get_scrape
-    Nokogiri::HTML(open("https://www.tasteofhome.com/collection/best-airport-restaurants/"))
+    Nokogiri::HTML(open("https://www.timeout.com/chicago/restaurants/the-best-sushi-in-chicago"))
   end
 
   def scrape_index
-    self.get_scrape.css(".entry-content .listicle-page")
+    self.get_scrape.css(".clearfix xs-text-left zone xs-pb4 list-redesign v5-zone has-moblie-cta")
+    self.get_scrape.css(".js-article-wrap sm-flex")
   end
 
-  def list_airport
+  def list_restaurant
     scrape_index.each do |li|
-      Airport.new_list(li)
+      Restaurant.new_list(li)
     end
+  end
+
+  def self.new_list(l)
+    self.new(
+
+    l.css('h3 a').text,
+    l.css('h3 a').map{|lin| lin.attr('href')}[0]
+    )
+    #binding.pry
+  end
+
+  def name
+    @name = doc.css(".entry-content .listicle-page:contains('name')").text
+  end
+
+  def page
+    @page = doc.css(".entry-content .listicle-page:contains('page')")
   end
 
 end

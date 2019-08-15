@@ -1,11 +1,10 @@
 require 'pry'
 class Cli
-  BASE_URL = "https://www.tasteofhome.com/collection/best-airport-restaurants/"
 
   def run
-    Scraper.new.list_airport
+    Scraper.new.list_restaurant
     Scraper.new.scrape_index
-    puts "Welcome the Best Airports Restaurant Foodies Guide!"
+    puts "Welcome the Best Sushi Restaurants in chicago!"
     fly
   end
 
@@ -16,10 +15,11 @@ class Cli
 
     if input == "first"
       input = 1
-      the_airports(input)
+      the_restaurant(input)
     elsif input == "last"
       input = 11
-      the_airports(input)
+      the_restaurant(input)
+        binding.pry
   else
     puts "\nPlease enter your preference."
   end
@@ -35,7 +35,6 @@ class Cli
     input = gets.strip.to_i
   end
     r_info(input)
-    # fly
 end
 
   puts "Are you ready to venture off on new adventures? Y/N"
@@ -47,20 +46,14 @@ end
   end
 end
 
-  def the_airports(place)
+  def the_restaurant(place)
     if place == 1
-      puts "\n\n Beginning list of Best Airport Resturants \n\n"
-      Airport.all[0..10]
-  #     Airport.first(10).each do |p|
-  #      puts "#{p.name}. #{p.url_last}"
-  # end
+      puts "\n\n Beginning list of Best Sushi Resturants in Chicago \n\n"
+
+
    else
-      puts "\n\n Ending of list of Best Airport Resturants \n\n"
-      Airport.all[11..20]
-    #   Airport.last(10).each do |p|
-    #   puts "#{p.name}. #{p.url_last}"
-    #   fly
-    #  end
+      puts "\n\n Ending of list of Best Sushi Resturants in Chicago \n\n"
+
    end
  end
 
@@ -75,9 +68,8 @@ end
 
   def r_info(index)
     puts "\n\n\n"
-    puts "#{Airport.all[index -1].name}"
-    puts "#{Airport.all[index -1 ].url_last}"
-    binding.pry
+    puts "#{Scraper}"
+    puts "#{Scraper}"
     puts "\n\n\n"
     fly
   end
