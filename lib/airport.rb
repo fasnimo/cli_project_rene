@@ -17,10 +17,10 @@ class Airport
   def self.new_list(l)
     self.new(
 
-    l.css('h4 strong').text
-    l.css('h4 a').map {|lin| lin.attr('href')}[0]
+    l.css('h4 strong').text,
+    l.css('h4 a').map{|lin| lin.attr('href')}[0]
     )
-    binding.pry
+    #binding.pry
   end
   #might delete
   # def doc
