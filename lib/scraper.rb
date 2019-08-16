@@ -1,7 +1,7 @@
 require 'pry'
 class Scraper
 
-  
+
 def self.scrape_index_page
 
       doc = Nokogiri::HTML(open('https://www.timeout.com/chicago/restaurants/the-best-sushi-in-chicago'))
@@ -30,6 +30,9 @@ def self.scrape_index_page
       #restaurant_list << restaurant
     #restaurant_list
   end
+end
+
+#Older Edits
 
 #end
   #end
@@ -42,7 +45,7 @@ def self.scrape_index_page
     # price = listing_details.css("tr:nth-child(5) td").text.strip
     #puts "Im in scrape index page"
   #end
-end
+
 #     doc = Nokogiri::HTML(open("https://www.timeout.com" + link0))
 #     restaurant_list = {}
 #     social_container = doc.css(".listing_details").collect {|info| info.text}
