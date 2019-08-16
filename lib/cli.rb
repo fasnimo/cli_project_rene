@@ -24,7 +24,6 @@ class CLI
     end
 
     def list_restaurant
-      puts "list restauran tis running"
         Scraper.scrape_index_page
 
           Restaurant.all.each.with_index(1) do |restaurants, index|
@@ -40,7 +39,8 @@ class CLI
 
         restaurant = Restaurant.all[input.to_i - 1]
         #Scraper.scraper_index_page
-        Scraper.scrape_profile_page(restaurant)
+         #Scraper.scrape_profile_page(restaurant)
+
         puts ""
         puts "The restaurants address is #{restaurant.address} "
         puts ""
