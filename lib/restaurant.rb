@@ -4,9 +4,11 @@ class Restaurant
 
   @@all = []
 
-  def initialize(name = nil, name_profile = nil)
+  def initialize(name = nil, address = nil, transport = nil, price = nil)
     @name = name
-    @name_profile = name_profile
+    @address = addess
+    @transport = transport
+    @price = price
     @@all << self
   end
 
