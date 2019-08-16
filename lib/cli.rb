@@ -10,13 +10,13 @@ class CLI
         input = ""
         until input == "exit"
 
-            puts "Please enter 'list restaurants'!"
+            puts "Please enter 'list'!"
             puts " Please type 'exit' to leave. Thank you!"
 
         input = gets.chomp
 
         case input
-        when "list restaurants"
+        when "list"
                 list_restaurant
                 information
             end
@@ -24,6 +24,7 @@ class CLI
     end
 
     def list_restaurant
+      puts "list restauran tis running"
         Scraper.scrape_index_page
 
           Restaurant.all.each.with_index(1) do |restaurants, index|
@@ -41,12 +42,13 @@ class CLI
 
         Scraper.scrape_profile_page(restaurant)
         puts ""
-        puts "Some of the best restaurants like #{restaurant.name}! Have tons of amazing sushi to try, here is some information below. "
+        puts "The restaurants address is #{restaurant.address} "
         puts ""
-        puts "Search nearest you #{restaurant.address}"
-        puts "What you'll be paying #{restaurant.price}"
+        puts "The best way to get this is buy #{restaurant.transport}"
+        puts "What you'll be paying for their best food #{restaurant.price}"
         puts ""
-        puts "Please look for #{restaurant.address} in #{restaurant.name_profile}!"
+        puts "We hope you enjoyed out blog!"
         puts ""
+
     end
 end
