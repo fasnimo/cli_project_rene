@@ -39,7 +39,7 @@ class CLI
         input = gets.chomp
 
         restaurant = Restaurant.all[input.to_i - 1]
-
+        #Scraper.scraper_index_page
         Scraper.scrape_profile_page(restaurant)
         puts ""
         puts "The restaurants address is #{restaurant.address} "

@@ -11,21 +11,25 @@ def self.scrape_index_page
       link1 = doc.css(".card-title a").attr("href").value
       links = doc.css(".card-title a").map{|a| a.attr("href")}
       link1
+      detail_page = Nokogiri::HTML(open("https://www.timeout.com" + link1))
+      listing_details = detail_page.css(".listing_details")
+      address = listing_details.css("tr:nth-child(1) td").text.strip
+      transport = listing_details.css("tr:nth-child(3) td").text.strip
+      price = listing_details.css("tr:nth-child(5) td").text.strip
 
       #restaurant = {name: name, link0: link0}
       #restaurant_list << restaurant
     #restaurant_list
   end
 
-  def self.scrape_profile_page(detail_page)
-    link1 = detail_page.css(".card-title a").attr("href").value
-    detail_page = Nokogiri::HTML(open("https://www.timeout.com" + link1))
-    listing_details = detail_page.css(".listing_details")
-    address = listing_details.css("tr:nth-child(1) td").text.strip
-    transport = listing_details.css("tr:nth-child(3) td").text.strip
-    price = listing_details.css("tr:nth-child(5) td").text.strip
-    puts "Im in scrape index page"
-  end
+  #def self.scrape_profile_page
+    # detail_page = Nokogiri::HTML(open("https://www.timeout.com" + link1))
+    # listing_details = detail_page.css(".listing_details")
+    # address = listing_details.css("tr:nth-child(1) td").text.strip
+    # transport = listing_details.css("tr:nth-child(3) td").text.strip
+    # price = listing_details.css("tr:nth-child(5) td").text.strip
+    #puts "Im in scrape index page"
+  #end
 end
 #     doc = Nokogiri::HTML(open("https://www.timeout.com" + link0))
 #     restaurant_list = {}
