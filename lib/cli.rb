@@ -1,4 +1,4 @@
-
+require 'pry'
 class CLI
 
     def run
@@ -37,15 +37,14 @@ class CLI
 
         input = gets.chomp
 
-        restaurant = Restaurant.all[input.to_i - 1]
-        #Scraper.scraper_index_page
+        restaurants = Restaurant.all[input.to_i - 1]
+        Scraper.scrape_index_page
          #Scraper.scrape_profile_page(restaurant)
-
         puts ""
-        puts "The restaurants address is #{restaurant.address} "
+        puts "The restaurants location is #{restaurants.address} "
         puts ""
-        puts "The best way to get this is buy #{restaurant.transport}"
-        puts "What you'll be paying for their best food #{restaurant.price}"
+        puts "The best way to get this is buy #{restaurants.transport}"
+        puts "What you'll be paying for their best food #{restaurants.price}"
         puts ""
         puts "We hope you enjoyed out blog!"
         puts ""
