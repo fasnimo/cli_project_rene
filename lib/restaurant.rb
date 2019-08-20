@@ -3,16 +3,16 @@ class Restaurant
 
   @@all = []
 
-  attr_accessor :name, :url, :address, :price
-
+  attr_accessor :name, :url, :address
   def self.all
     @@all
   end
 
-  def initialize(name: name, url: url)
+  def initialize(name, url, address)
     @name = name
     @url = url
-    @address, @price = nil, nil
+    @address = address
+
     @@all << self
   end
 

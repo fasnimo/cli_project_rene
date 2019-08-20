@@ -1,9 +1,6 @@
 require 'pry'
 class Cli
 
-    #MAY need to change initialize
-
-
     def run
 
         puts ""
@@ -38,19 +35,17 @@ class Cli
       puts "Please choose by number"
       index = gets.strip.to_i - 1
       foodies = Restaurant.all[index]
-      Scraper.scrape_page
-      Scraper.inform#(foodies)
+      # Scraper.scrape_page
+      # Scraper.inform#(foodies)
       self.information(foodies)
 
     end
 
     def information(foodies)
-        Scraper.scrape_page
-        Scraper.inform
+        #Scraper.scrape_page
+        # Scraper.inform
         puts ""
         puts foodies.address
-        puts ""
-        puts foodies.price
 
         puts ""
         puts "We hope you enjoyed our services!"
