@@ -28,8 +28,8 @@ class Cli
 
     def list_restaurant
         # Scraper.scrape_page
-          Restaurant.all.each.with_index(1) do |r, index|
-            puts "#{index}. #{r.name}"
+          Restaurant.all.each_with_index do |r, index|
+            puts "#{index + 1}. #{r.name}"
         end
     end
 
@@ -51,7 +51,7 @@ class Cli
         puts foodies.address
         puts ""
         puts foodies.price
-        binding.pry 
+
         puts ""
         puts "We hope you enjoyed our services!"
         puts ""

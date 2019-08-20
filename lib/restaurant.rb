@@ -13,7 +13,7 @@ class Restaurant
     @name = name
     @url = url
     @address, @price = nil, nil
-    self.class.all << self
+    @@all << self
   end
 
 end

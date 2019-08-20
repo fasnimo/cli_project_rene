@@ -13,11 +13,10 @@ require 'pry'
 
 
 class Scraper
-  #SITE = 'https://www.timeout.com/chicago/restaurants/the-best-sushi-in-chicago'
+
 
 def self.scrape_page
-  #food = open(SITE)
-  #html = Nokogiri::HTML(food)
+
   html = Nokogiri::HTML(open("https://www.timeout.com/chicago/restaurants/the-best-sushi-in-chicago"))
   html.css('.card-title a').collect do |list|
     inputs = {
@@ -29,11 +28,8 @@ def self.scrape_page
 end
 end
 
-def self.inform#(foodies)
-  #url = foodies.url
-  # details = htmls.css('.listing_details')
-  # foodies.address = details.css('tr:nth-child(1) td').text.strip
-  # foodies.price = details.css('tr:nth-child(5) td').text.strip
+def self.inform
+
   htmls = Nokogiri::HTML(open('https://www.timeout.com/chicago/restaurants'))
   htmls.css('.listing_details').map do |detail|
     input = {
