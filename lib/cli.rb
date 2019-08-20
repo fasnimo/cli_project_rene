@@ -27,8 +27,7 @@ class Cli
     end
 
     def list_restaurant
-        #Scraper.scrape_page
-
+        # Scraper.scrape_page
           Restaurant.all.each.with_index(1) do |r, index|
             puts "#{index}. #{r.name}"
         end
@@ -39,23 +38,20 @@ class Cli
       puts "Please choose by number"
       index = gets.strip.to_i - 1
       foodies = Restaurant.all[index]
-      Scraper.inform(foodies)
+      Scraper.scrape_page
+      Scraper.inform#(foodies)
       self.information(foodies)
-      # input = gets.chomp
-      #
-      # restaurants = Restaurant.all[input.to_i - 1]
-      # Scraper.inform
+
     end
 
     def information(foodies)
-
-         #Scraper.scrape_profile_page(restaurant)
-        puts ""
-        puts foodies.name
+        Scraper.scrape_page
+        Scraper.inform
         puts ""
         puts foodies.address
         puts ""
         puts foodies.price
+        binding.pry 
         puts ""
         puts "We hope you enjoyed our services!"
         puts ""
