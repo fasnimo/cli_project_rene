@@ -1,5 +1,5 @@
 require 'pry'
-class CLI
+class Cli
 
     def run
 
@@ -38,7 +38,7 @@ class CLI
         input = gets.chomp
 
         restaurants = Restaurant.all[input.to_i - 1]
-        Scraper.scrape_index_page
+        Scraper.inform
          #Scraper.scrape_profile_page(restaurant)
         puts ""
         puts "The restaurants location is #{restaurants.address} "
