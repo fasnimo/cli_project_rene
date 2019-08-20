@@ -1,12 +1,15 @@
 require 'pry'
 class Cli
 
+    #MAY need to change initialize
+
+
     def run
 
         puts ""
         puts "Welcome!"
         puts ""
-
+        Scraper.scrape_page
         input = ""
         until input == "exit"
 
@@ -17,36 +20,44 @@ class Cli
 
         case input
         when "list"
-                list_restaurant
-                information
+                self.list_restaurant
+                self.determine
             end
         end
     end
 
     def list_restaurant
-        Scraper.scrape_index_page
+        #Scraper.scrape_page
 
-          Restaurant.all.each.with_index(1) do |restaurants, index|
-            puts "#{index}. #{restaurants.id}"
+          Restaurant.all.each.with_index(1) do |r, index|
+            puts "#{index + 1}. #{r.name}"
         end
     end
 
-    def information
-        puts ""
-        puts "Please choose by number"
+    def determine
+      puts ""
+      puts "Please choose by number"
+      index = gets.strip.to_i - 1
+      foodies = Restaurant.all[index]
+      Scraper.inform(foodies)
+      self.information(foodies)
+      # input = gets.chomp
+      #
+      # restaurants = Restaurant.all[input.to_i - 1]
+      # Scraper.inform
+    end
 
-        input = gets.chomp
+    def information(foodies)
 
-        restaurants = Restaurant.all[input.to_i - 1]
-        Scraper.inform
          #Scraper.scrape_profile_page(restaurant)
         puts ""
-        puts "The restaurants location is #{restaurants.address} "
+        puts foodies.name
         puts ""
-        puts "The best way to get this is buy #{restaurants.transport}"
-        puts "What you'll be paying for their best food #{restaurants.price}"
+        puts foodies.address
         puts ""
-        puts "We hope you enjoyed out blog!"
+        puts foodies.price
+        puts ""
+        puts "We hope you enjoyed our services!"
         puts ""
 
     end

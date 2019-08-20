@@ -1,24 +1,19 @@
 require 'pry'
 class Restaurant
 
-attr_accessor :name, :address
-
   @@all = []
 
-  def initialize(name = nil, address = nil)
-    @name = name
-    @address = address
-    @@all << self
-  end
+  attr_accessor :name, :url, :address, :price
 
   def self.all
     @@all
   end
-#A
-  def scrape(name)
-    name.each do |every|
-      Scraper.create(every)
-    end
+
+  def initialize(name: name, url: url)
+    @name = name
+    @url = url
+    @address, @price = nil, nil
+    self.class.all << self
   end
 
 end
