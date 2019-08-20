@@ -30,7 +30,7 @@ class Cli
         #Scraper.scrape_page
 
           Restaurant.all.each.with_index(1) do |r, index|
-            puts "#{index + 1}. #{r.name}"
+            puts "#{index}. #{r.name}"
         end
     end
 
