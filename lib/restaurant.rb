@@ -1,4 +1,4 @@
-require 'pry'
+
 class Restaurant
 
   @@all = []
@@ -12,7 +12,6 @@ class Restaurant
     @name = name
     @url = url
     @address = address
-
     @@all << self
   end
 
