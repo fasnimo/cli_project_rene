@@ -7,10 +7,11 @@ class Cli
       puts ""
       Scraper.scrape_page
       input = ""
-    until input == "exit"
+
+    while input != "exit"
     if input == "list"
-      self.list_restaurant
-      self.determine
+      list_restaurant
+      determine
     end
       puts "Please enter 'list'!"
       puts " Please type 'exit' to leave. Thank you!"
@@ -20,7 +21,7 @@ class Cli
 
   def list_restaurant
       Restaurant.all.each_with_index do |r, index|
-      puts "#{index + 1}. #{r.name}"
+        puts "#{index + 1}. #{r.name}"
       end
   end
 
