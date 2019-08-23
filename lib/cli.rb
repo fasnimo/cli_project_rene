@@ -30,7 +30,7 @@ class Cli
       index = gets.strip.to_i - 1
     if index >= 0 && index < Restaurant.all.size
       foodies = Restaurant.all[index]
-      self.information(foodies)
+      information(foodies)
     else
       puts "Invalid input!"
       determine
